@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GitVersionExe": {
+      "commandName": "Project",
+      "commandLineArgs": "/output buildserver /updateassemblyinfo true /diag true /verbosity debug /nofetch true"
+    }
+  }
+}

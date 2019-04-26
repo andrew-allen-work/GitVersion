@@ -20,7 +20,8 @@ namespace GitVersion
 
         public VersionVariables ExecuteGitVersion(string targetUrl, string dynamicRepositoryLocation, Authentication authentication, string targetBranch, bool noFetch, string workingDirectory, string commitId, Config overrideConfig = null, bool noCache = false)
         {
-            // Normalise if we are running on build server
+            // Normalise if we are running on build server EXCEPT on windows and also respect NOFETCH... even on build server due to long path names ...
+
             var applicableBuildServers = BuildServerList.GetApplicableBuildServers();
             var buildServer = applicableBuildServers.FirstOrDefault();
             var fetch = noFetch || (buildServer != null && buildServer.PreventFetch());
