@@ -48,11 +48,12 @@ namespace GitVersion
 
         public string DynamicGitRepositoryPath { get; private set; }
 
-        public void Initialise(bool normaliseGitDirectory, string currentBranch, bool shouldCleanUpRemotes = false)
+        public void Initialise(bool normaliseGitDirectory, string currentBranch, bool shouldCleanUpRemotes = false, bool fetch=false)
         {
+
             if (string.IsNullOrWhiteSpace(targetUrl))
             {
-                if (normaliseGitDirectory)
+                if (fetch | normaliseGitDirectory)
                 {
                     using (Logger.IndentLog(string.Format("Normalizing git directory for branch '{0}'", currentBranch)))
                     {
